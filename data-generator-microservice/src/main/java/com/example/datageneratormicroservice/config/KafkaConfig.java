@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
+import reactor.kafka.sender.KafkaSender;
 import reactor.kafka.sender.SenderOptions;
 
 import java.time.Duration;
@@ -78,6 +79,12 @@ public class KafkaConfig {
                         .toString()
         );
         return SenderOptions.create(props);
+    }
+
+    //bean that will send a messages
+    @Bean
+    public KafkaSender<String, Object> sender(){
+        return KafkaSender.create(senderOptions());
     }
 
 }
