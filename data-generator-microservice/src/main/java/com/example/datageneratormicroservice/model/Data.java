@@ -1,6 +1,5 @@
 package com.example.datageneratormicroservice.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +16,7 @@ public class Data {
     private double measurement;
     private MeasurementType measurementType;
 
-    public enum MeasurementType{
+    public enum MeasurementType {
         TEMPERATURE,
         VOLTAGE,
         POWER

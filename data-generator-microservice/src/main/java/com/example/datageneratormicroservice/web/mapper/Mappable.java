@@ -1,7 +1,5 @@
 package com.example.datageneratormicroservice.web.mapper;
 
-import org.mapstruct.Mapper;
-
 import java.util.List;
 
 public interface Mappable<E, D> {

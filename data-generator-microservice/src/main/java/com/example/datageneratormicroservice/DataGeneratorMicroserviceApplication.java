@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DataGeneratorMicroserviceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DataGeneratorMicroserviceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DataGeneratorMicroserviceApplication.class, args);
+    }
 
 }

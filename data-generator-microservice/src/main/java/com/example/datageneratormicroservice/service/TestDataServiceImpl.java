@@ -24,7 +24,7 @@ public class TestDataServiceImpl implements TestDataService {
                     () -> {
                         Data data = new Data();
                         data.setSensorId(
-                                (long)getRandomNumber(1, 10)
+                                (long) getRandomNumber(1, 10)
                         );
                         data.setMeasurement(
                                 getRandomNumber(15, 100)
@@ -47,13 +47,13 @@ public class TestDataServiceImpl implements TestDataService {
     }
 
     private double getRandomNumber(double min, int max) {
-        return (Math.random()*(max-min))+min;
+        return (Math.random() * (max - min)) + min;
     }
 
     private Data.MeasurementType getRandomMeasurementType(
-                        Data.MeasurementType[] measurementTypes
-    ){
-        int randomTypeId = (int)(Math.random()* measurementTypes.length);
+            Data.MeasurementType[] measurementTypes
+    ) {
+        int randomTypeId = (int) (Math.random() * measurementTypes.length);
         return measurementTypes[randomTypeId];
     }
 

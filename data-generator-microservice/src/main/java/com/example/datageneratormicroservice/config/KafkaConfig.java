@@ -26,7 +26,7 @@ public class KafkaConfig {
     private final XML settings;
 
     @Bean
-    public NewTopic temperatureTopic(){
+    public NewTopic temperatureTopic() {
         return TopicBuilder.name("data-temperature")
                 .partitions(5)
                 .replicas(1)
@@ -38,7 +38,7 @@ public class KafkaConfig {
     }
 
     @Bean
-    public NewTopic voltageTopic(){
+    public NewTopic voltageTopic() {
         return TopicBuilder.name("data-voltage")
                 .partitions(5)
                 .replicas(1)
@@ -50,7 +50,7 @@ public class KafkaConfig {
     }
 
     @Bean
-    public NewTopic powerTopic(){
+    public NewTopic powerTopic() {
         return TopicBuilder.name("data-power")
                 .partitions(5)
                 .replicas(1)
@@ -62,7 +62,7 @@ public class KafkaConfig {
     }
 
     @Bean
-    public SenderOptions<String, Object> senderOptions(){
+    public SenderOptions<String, Object> senderOptions() {
         Map<String, Object> props = new HashMap<>(3);
         props.put(
                 ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
@@ -83,7 +83,7 @@ public class KafkaConfig {
 
     //bean that will send a messages
     @Bean
-    public KafkaSender<String, Object> sender(){
+    public KafkaSender<String, Object> sender() {
         return KafkaSender.create(senderOptions());
     }
 
