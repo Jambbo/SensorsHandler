@@ -48,7 +48,7 @@ public class KafkaConfig {
                         this.settings, "//valueDeserializer"
                 ).toString()
         );
-        //to work normally with the packages in app and tp handle it
+        //to work normally with the packages in app and to handle it
         props.put(
                 "spring.json.trusted.packages",
                 new TextXPath(

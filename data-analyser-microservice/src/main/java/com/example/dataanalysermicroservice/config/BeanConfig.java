@@ -15,7 +15,7 @@ public class BeanConfig {
     @Bean
     public XML consumerXML() {
         return new XMLDocument(
-                new File("src/main/resources/kafka/consumer.xml")
+                getClass().getResourceAsStream("/kafka/consumer.xml").readAllBytes()
         );
     }
 

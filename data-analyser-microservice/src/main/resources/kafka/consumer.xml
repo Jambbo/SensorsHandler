@@ -7,4 +7,5 @@
     <valueDeserializer>
         org.apache.kafka.common.serialization.StringDeserializer
     </valueDeserializer>
+    <trustedPackages>*</trustedPackages>
 </consumer>

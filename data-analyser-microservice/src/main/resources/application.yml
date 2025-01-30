@@ -7,4 +7,4 @@ spring:
 server:
   port: 8082
 
-topics: ${KAFKA_SUBSCRIBED_TOPICS}
+topics: data-temperature,data-power,data-voltage
