@@ -8,6 +8,8 @@ volumes:
     driver: local
   zookeeper-data:
     driver: local
+  db-data:
+    driver: local
 
 services:
   zookeeper:
@@ -39,5 +41,21 @@ services:
       - sensorhandling
     volumes:
       - kafka-data:/var/lib/kafka/data
+
+  db:
+    image: 'postgres:15.1-alpine'
+    container_name: postgres
+    networks:
+      - sensorhandling
+    env_file:
+      - .env
+    ports:
+      - '5437:5432'
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
+    volumes:
+      - db-data:/var/lib/postgresql/data
 
 

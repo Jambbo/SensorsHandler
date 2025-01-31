@@ -82,10 +82,6 @@
 			<version>${jcabi-xml.version}</version>
 		</dependency>
 
-
-
-
-
 	</dependencies>
 
 	<build>
