@@ -10,35 +10,55 @@ volumes:
     driver: local
   db-data:
     driver: local
+  redis-data:
+    driver: local
 
 services:
-  zookeeper:
-    image: 'confluentinc/cp-zookeeper:latest'
-    ports:
-      - '2181:2181'
-    environment:
-      - ZOOKEEPER_CLIENT_PORT=${ZOOKEEPER_CLIENT_PORT}
-      - ZOOKEEPER_TICK_TIME=${ZOOKEEPER_TICK_TIME}
+  generator:
+    image: 'jambbo/data-generator-microservice:latest'
     networks:
       - sensorhandling
+    depends_on:
+      - kafka
+    env_file:
+      - .env
+    ports:
+      - '8081:8081'
 
+  analyser:
+    image: 'jambbo/data-analyser-microservice:latest'
+    networks:
+      - sensorhandling
+    depends_on:
+      - db
+      - kafka
+    env_file:
+      - .env
+    ports:
+      - '8082:8082'
+
+
+  zookeeper:
+    image: 'confluentinc/cp-zookeeper:latest'
+    networks:
+      - sensorhandling
+    env_file:
+      - .env
+    ports:
+      - '2181:2181'
     volumes:
       - zookeeper-data:/var/lib/zookeeper/data
 
   kafka:
     image: 'confluentinc/cp-kafka:latest'
-    ports:
-      - '9092:9092'
-    depends_on:
-      - zookeeper
-    environment:
-      - KAFKA_BROKER_ID=${KAFKA_BROKER_ID}
-      - KAFKA_ZOOKEEPER_CONNECT=${KAFKA_ZOOKEEPER_CONNECT}
-      - KAFKA_ADVERTISED_LISTENERS=${KAFKA_ADVERTISED_LISTENERS}
-      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=${KAFKA_LISTENER_SECURITY_PROTOCOL_MAP}
-      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=${KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR}
     networks:
       - sensorhandling
+    depends_on:
+      - zookeeper
+    env_file:
+      - .env
+    ports:
+      - '9092:9092'
     volumes:
       - kafka-data:/var/lib/kafka/data
 
