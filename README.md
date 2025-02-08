@@ -19,37 +19,44 @@ The system uses Debezium to listen for changes in the PostgreSQL database and up
 - **Containerization**: [Docker, Dockerfile, docker-compose.yml]
 - **Other Tools**: [Maven, Gson, Liquibase]
 
-## Getting Started
+## API Documentation
 
-### API Documentation
+### Service 1: Data Generator Microservice
 
-1. **Data Generator Microservice**:
-   - **POST**: ```api/v1/data/send```
-   - **EXAMPLE JSON**:
-   ```
+- **POST** `/send`: Sends sensor data to Kafka.
+    - **Request body**: 
+    ```json
     {
-      "sensorId":10,
-      "timestamp":"2025-02-08T16:16:27",
-      "measurement":18.5,
-      "measurementType": "VOLTAGE"
+        "sensorId": 10,
+        "timestamp": "2025-02-08T16:16:27",
+        "measurement": 18.5,
+        "measurementType": "VOLTAGE"
     }
-   ```
-   - **POST**: ```api/v1/data/test/send```
-   - **EXAMPLE JSON**:
-   ```
+    ```
+    - **Response**: HTTP 200 OK if data is sent successfully.
+
+- **POST** `/test/send`: Sends test data for sensor measurements.
+    - **Request body**:
+    ```json
     {
-      "delayInSeconds":5,
-      "measurementTypes":[
+    "delayInSeconds":5,
+    "measurementTypes":[
         "POWER",
         "VOLTAGE",
         "TEMPERATURE"
-      ]
-   }
-   ```
+    ]
+    }
+    ```
+    - **Response**: HTTP 200 OK if test data is sent successfully.
 
-  
-3. **Data Store Microservice**:
-   - **GET**: ```api/v1/analytics/summary/1?mt=POWER&mt=VOLTAGE&st=AVG```
+### Service 2: Data Analyzer Microservice
+
+- **GET** `/summary/{sensorId}`: Retrieves aggregated sensor data summary (e.g., `avg`, `max`, `min` values).
+    - **Path Variable**: `sensorId` (ID of the sensor)
+    - **Request parameters**:
+        - `mt` (optional): Set of measurement types (e.g., `VOLTAGE`, `TEMPERATURE`)
+        - `st` (optional): Set of summary types (e.g., `sum`, `avg`)
+    - **Response**: JSON summary of the requested sensor data.
 
 ### Prerequisites
 
