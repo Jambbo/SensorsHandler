@@ -49,7 +49,7 @@ The system uses Debezium to listen for changes in the PostgreSQL database and up
     ```
     - **Response**: HTTP 200 OK if test data is sent successfully.
 
-### Service 2: Data Analyzer Microservice
+### Service 3: Data Store Microservice
 
 - **GET** `/summary/{sensorId}`: Retrieves aggregated sensor data summary (e.g., `avg`, `max`, `min` values).
     - **Path Variable**: `sensorId` (ID of the sensor)
