@@ -1,16 +1,11 @@
 spring:
-  config:
-    import: optional:file:.env[.properties]
-  data:
-    redis:
-      host: ${REDIS_HOST}
-      port: ${REDIS_PORT}
+  profiles:
+    default: local
   kafka:
     consumer:
-      bootstrap-servers: kafka:9092
-      group-id: ${DEBEZIUM_KAFKA_BROKER_ID}
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
 server:
   port: 8083

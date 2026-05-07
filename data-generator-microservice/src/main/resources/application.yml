@@ -1,8 +1,6 @@
 spring:
-  config:
-    import: optional:file:.env[.properties]
-  kafka:
-    bootstrap-servers: kafka:9092
+  profiles:
+    default: local
 
 server:
   port: 8081
