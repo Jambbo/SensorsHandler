@@ -1,0 +1,6 @@
+.env
+.idea
+data-analyser-microservice/target
+data-store-microservice/target
+data-generator-microservice/target
+data-analyser-microservice/.DS_Store
