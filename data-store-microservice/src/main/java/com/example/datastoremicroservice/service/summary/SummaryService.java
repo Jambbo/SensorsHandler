@@ -1,16 +1,15 @@
-package com.example.datastoremicroservice.repository;
+package com.example.datastoremicroservice.service.summary;
 
 import com.example.datastoremicroservice.model.Data;
 import com.example.datastoremicroservice.model.MeasurementType;
 import com.example.datastoremicroservice.model.Summary;
 import com.example.datastoremicroservice.model.SummaryType;
 
-import java.util.Optional;
 import java.util.Set;
 
-public interface SummaryRepository {
+public interface SummaryService {
 
-    Optional<Summary> findBySensorId(
+    Summary get(
             long sensorId,
             Set<MeasurementType> measurementTypes,
             Set<SummaryType> summaryTypes

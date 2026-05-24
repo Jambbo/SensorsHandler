@@ -17,4 +17,12 @@ public class RedisSchema {
         return KeyHelper.getKey("sensors:"+sensorId+":"+measurementType.name().toLowerCase());
     }
 
+    //hash with thresholds, thresholds:1:temperature
+    public static String thresholdKey(
+        long sensorId,
+        MeasurementType measurementType
+    ){
+        return KeyHelper.getKey("thresholds:"+sensorId+":"+measurementType.name().toLowerCase());
+    }
+
 }
