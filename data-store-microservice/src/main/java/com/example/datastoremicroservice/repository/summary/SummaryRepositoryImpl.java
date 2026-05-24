@@ -1,4 +1,4 @@
-package com.example.datastoremicroservice.repository;
+package com.example.datastoremicroservice.repository.summary;
 
 import com.example.datastoremicroservice.config.RedisSchema;
 import com.example.datastoremicroservice.model.Data;

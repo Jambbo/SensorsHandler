@@ -1,11 +1,11 @@
-package com.example.datastoremicroservice.service;
+package com.example.datastoremicroservice.service.summary;
 
 import com.example.datastoremicroservice.model.Data;
 import com.example.datastoremicroservice.model.MeasurementType;
 import com.example.datastoremicroservice.model.Summary;
 import com.example.datastoremicroservice.model.SummaryType;
 import com.example.datastoremicroservice.model.exception.SensorNotFoundException;
-import com.example.datastoremicroservice.repository.SummaryRepository;
+import com.example.datastoremicroservice.repository.summary.SummaryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

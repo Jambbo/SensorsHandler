@@ -4,6 +4,8 @@ spring:
       host: redis
       port: 6379
   kafka:
+    bootstrap-servers: kafka:9092
     consumer:
-      bootstrap-servers: kafka:9092
       group-id: ${DEBEZIUM_KAFKA_BROKER_ID}
+
+topics: data-temperature,data-power,data-voltage

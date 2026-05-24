@@ -1,4 +1,4 @@
-package com.example.datastoremicroservice.service;
+package com.example.datastoremicroservice.service.debezium;
 
 public interface CDCEventConsumer {
 

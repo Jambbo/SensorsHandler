@@ -4,6 +4,8 @@ spring:
       host: localhost
       port: 6379
   kafka:
+    bootstrap-servers: localhost:9094
     consumer:
-      bootstrap-servers: localhost:9094
       group-id: local-group
+
+topics: data-temperature,data-power,data-voltage

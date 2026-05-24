@@ -1,7 +1,9 @@
-package com.example.datastoremicroservice.service;
+package com.example.datastoremicroservice.service.debezium;
 
 import com.example.datastoremicroservice.model.Data;
 import com.example.datastoremicroservice.model.MeasurementType;
+import com.example.datastoremicroservice.service.summary.SummaryService;
+import com.example.datastoremicroservice.service.threshold.ThresholdService;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +19,9 @@ import java.util.TimeZone;
 public class DebeziumEventConsumerImpl implements CDCEventConsumer{
 
     private final SummaryService summaryService;
+    private final ThresholdService thresholdService;
 
+    //consumes the events that Debezium produced
     @Override
     @KafkaListener(topics = "data")
     public void handle(String message) {
@@ -55,6 +59,7 @@ public class DebeziumEventConsumerImpl implements CDCEventConsumer{
                 )
             );
             summaryService.handle(data);
+            thresholdService.check(data);
         }catch (Exception e){
             e.printStackTrace();
         }
