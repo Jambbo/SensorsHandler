@@ -1,0 +1,9 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9094
+    consumer:
+      group-id: anomaly-detection-group
+  data:
+    redis:
+      host: localhost
+      port: 6379
