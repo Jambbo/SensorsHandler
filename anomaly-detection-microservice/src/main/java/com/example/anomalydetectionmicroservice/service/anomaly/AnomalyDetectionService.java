@@ -1,4 +1,9 @@
 package com.example.anomalydetectionmicroservice.service.anomaly;
 
-public class AnomalyDetectionService {
+import com.example.anomalydetectionmicroservice.model.SensorReading;
+
+public interface AnomalyDetectionService {
+
+    void analyze(SensorReading reading);
+
 }
