@@ -3,6 +3,8 @@ package com.example.anomalydetectionmicroservice.model;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDateTime;
+
 //data deserialized from kafka
 @NoArgsConstructor
 @Getter
@@ -14,5 +16,6 @@ public class SensorReading {
     Long sensorId;
     MeasurementType measurementType;
     double measurement;
+    LocalDateTime timestamp;
 
 }

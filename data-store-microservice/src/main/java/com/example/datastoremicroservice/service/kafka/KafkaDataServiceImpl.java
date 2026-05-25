@@ -22,7 +22,7 @@ public class KafkaDataServiceImpl implements KafkaDataService {
                         Mono.just(
                                 SenderRecord.create(
                                         topic,
-                                        0,
+                                        null,
                                         System.currentTimeMillis(),
                                         String.valueOf(notification.hashCode()),//key for message
                                         notification.getMessage(),
