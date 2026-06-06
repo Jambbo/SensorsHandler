@@ -1,5 +1,10 @@
 .env
 .idea
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
 data-analyser-microservice/target
 data-store-microservice/target
 data-generator-microservice/target
