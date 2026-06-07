@@ -23,7 +23,7 @@ class StreamBuffer:
         self.window_size = window_size
         self.training_size = training_size
         self.normalizer = Normalizer(eps)
-        self._training: list[float] = []  # war readings, pre-fit
+        self._training: list[float] = []  # raw readings, pre-fit
         self._window: deque[float] = deque(maxlen=window_size)  # normalized
 
     @property
