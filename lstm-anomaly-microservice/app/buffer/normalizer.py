@@ -22,9 +22,9 @@ class Normalizer:
 
     # stats computed once and stored
     def fit(self, values) -> "Normalizer":
-        valuesArr = np.asarray(values, dtype=float)
-        self.mean = valuesArr.mean()
-        self.std = valuesArr.std()
+        values_arr = np.asarray(values, dtype=float)
+        self.mean = values_arr.mean()
+        self.std = values_arr.std()
         return self
 
     # standardization
