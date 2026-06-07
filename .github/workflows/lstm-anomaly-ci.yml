@@ -1,0 +1,37 @@
+name: lstm-anomaly-microservice CI
+
+# Run on every push, and on every PR (the PR run is what gates a merge).
+# Path filters keep this monorepo job from firing when unrelated services change.
+on:
+  push:
+    paths:
+      - "lstm-anomaly-microservice/**"
+      - ".github/workflows/lstm-anomaly-ci.yml"
+  pull_request:
+    paths:
+      - "lstm-anomaly-microservice/**"
+      - ".github/workflows/lstm-anomaly-ci.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lstm-anomaly-microservice
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: lstm-anomaly-microservice/requirements-dev.txt
+
+      - name: Install dependencies (CPU-only torch to keep CI fast)
+        run: |
+          python -m pip install --upgrade pip
+          pip install --extra-index-url https://download.pytorch.org/whl/cpu -r requirements-dev.txt
+
+      - name: Run tests
+        run: python -m pytest -q
