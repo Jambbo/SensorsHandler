@@ -1,5 +1,4 @@
 import numpy as np
-from app.model.thresholder import Thresholder
 from app.model.trainer_autoencoder import TrainerAutoencoder
 
 
