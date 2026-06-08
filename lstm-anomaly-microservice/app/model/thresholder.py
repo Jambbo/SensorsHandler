@@ -1,6 +1,5 @@
 import numpy as np
 import torch
-from torch import nn
 from app.utils.to_tensor import to_tensor
 
 
